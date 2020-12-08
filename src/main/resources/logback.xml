@@ -1,0 +1,26 @@
+<configuration>
+	<property name="HOME_LOG" value="logs/app.log" />
+	<property resource="application.yml" />
+	<appender name="CONSOLE"
+		class="ch.qos.logback.core.ConsoleAppender">
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<Pattern>
+				%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg%n
+			</Pattern>
+		</layout>
+	</appender>
+
+
+
+	<logger name="org.springframework" level="{dummy.property}" additivity="false">
+		<appender-ref ref="CONSOLE" />
+	</logger>
+		<logger name="com.anupam" level="%{dummy.property}" additivity="false">
+		<appender-ref ref="CONSOLE" />
+	</logger>
+
+	<root level="error">
+		<appender-ref ref="CONSOLE" />
+	</root>
+
+</configuration>
