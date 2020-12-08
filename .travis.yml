@@ -14,9 +14,9 @@ script:
   
 after_success:
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
-  - docker build -t eureka-service .
-  - docker tag eureka-service:latest
-  - docker push anupamattrey/eureka-service:latest
+  - docker build -t discovery-service-0.0.1-SNAPSHOT .
+  - docker tag discovery-service:0.0.1-SNAPSHOT
+  - docker push anupamattrey/discovery-service:0.0.1-SNAPSHOT
   
 notifications:
   email:
