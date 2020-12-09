@@ -6,6 +6,14 @@ jdk:
 services:
   - docker
   
+env:
+  global:
+  #- secure: "encrypted-sonar-token"
+  #- secure: "encrypted-dockerhub-username"
+  #- secure: "encrypted-dockerhub-password"
+  #- secure: "encrypted-heroku-api-key"
+  - COMMIT=${TRAVIS_COMMIT::7}
+  
 before_install:
   - chmod +x mvnw
 
@@ -14,9 +22,11 @@ script:
   
 after_success:
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
-  - docker build -t discovery-service-0.0.1-SNAPSHOT .
-  - docker tag discovery-service:0.0.1-SNAPSHOT
-  - docker push anupamattrey/discovery-service:0.0.1-SNAPSHOT
+  - echo $DOCKER_USER
+  - export IMAGE_NAME=anupamattrey/discovery-service
+  - docker build -t $IMAGE_NAME:$COMMIT .
+  - docker tag docker tag $IMAGE_NAME:$COMMIT $IMAGE_NAME:$TAG
+  - docker push $IMAGE_NAME
   
 notifications:
   email:
