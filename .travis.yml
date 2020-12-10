@@ -22,11 +22,15 @@ script:
   
 after_success:
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
-  - echo $DOCKER_USER
   - export IMAGE_NAME=anupamattrey/discovery-service
   - docker build -t $IMAGE_NAME:$COMMIT .
   - docker tag docker tag $IMAGE_NAME:$COMMIT $IMAGE_NAME:$TAG
   - docker push $IMAGE_NAME
+
+  deploy:
+  provider: heroku
+  api_key: $HEROKU_API_KEY
+  app: eureka-server-128
   
 notifications:
   email:
