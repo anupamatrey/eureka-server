@@ -70,13 +70,13 @@
 	</dependencyManagement>
 
 	<build>
-		<finalName>discovery-service-${project.version}</finalName>
+		<finalName>eureka-service-${project.version}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>com.anupam.eureka.service.DiscoveryServiceApplication</mainClass>
+					<mainClass>com.anupam.eureka.service.EurekaServiceApplication</mainClass>
 					<addResources>true</addResources>
 				</configuration>
 				<executions>
