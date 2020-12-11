@@ -22,7 +22,7 @@ script:
   
 after_success:
   - docker login -u $DOCKER_USER -p $DOCKER_PASS
-  - export IMAGE_NAME=anupamattrey/discovery-service
+  - export IMAGE_NAME=anupamattrey/eureka-service
   - docker build -t $IMAGE_NAME:$COMMIT .
   - docker tag docker tag $IMAGE_NAME:$COMMIT $IMAGE_NAME:$TAG
   - docker push $IMAGE_NAME
