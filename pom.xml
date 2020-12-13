@@ -76,7 +76,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<mainClass>com.anupam.eureka.service.EurekaServiceApplication</mainClass>
+					<mainClass>com.anupam.service.eureka.EurekaServiceApplication</mainClass>
 					<addResources>true</addResources>
 				</configuration>
 				<executions>
